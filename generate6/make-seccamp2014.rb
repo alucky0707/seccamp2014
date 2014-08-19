@@ -1,8 +1,8 @@
 require 'base64'
 
 base64 = Base64.encode64(File::binread("../generate5/seccamp2014.7z")).tr("qwertyuiopasdfghjklzxcvbnm", "lkjhgfdsamnbvcxzpoiuytrewq")
-src = "return\"if(typeof encrypted==='undefined')console.log('$ cp seccamp2014.py seccamp2014.html && open seccamp2014.html');else{e=encrypted.toString();alert(''"
-msg = "Hint: Pa-tto! Pa-tto! Hareyakani!"
+src = "return\"if(typeof encrypted==='undefined')console.log('$ cp seccamp2014.py seccamp2014.html && open seccamp2014.html');else{e=encrypted.toString();onload=function(){document.body.innerHTML=''"
+msg = "<style>html,body{width:100%;height:100%;text-align:center;font-size:2.4em;margin-top:10%}</style>Hint:<br> Pa-tto! Pa-tto! Hareyakani!"
 pat = {
   "true"=>  "(!!$+[])",
   "NaN"=>   "((____/____)+[])",
@@ -10,7 +10,7 @@ pat = {
   "constructor"=> "$_",
   "undefined"=> "([][$]+[])",
 }
-str = "function encrypted(){/*\n<script src=\"seccamp2014.py\"></script>\n#{base64}\n-!''';q=\"__END__=0;s=1//2or'''%s''';q=%c%s%c;print(q%%(s,42,q,42))\";print(q%(s,42,q,42))#*/}"
+str = "function encrypted(){/*\n<script src=\"seccamp2014.py\"></script>\n#{base64}\n-!''';q=\"__END__=0;s=1//2or'''%s''';q=%c%s%c;print(q%%(s.replace('\\\\\\\\','\\\\\\\\\\\\\\\\'),34,q.replace('\\\\\\\\','\\\\\\\\\\\\\\\\'),34,42))#%c/}\";print(q%(s.replace('\\\\','\\\\\\\\'),34,q.replace('\\\\','\\\\\\\\'),34,42))#*/}"
 msg.chars do |c|
   (src << "+':'"; next) if c == ?:
   i = str.index c
@@ -18,7 +18,7 @@ msg.chars do |c|
   src << "+e[#{i}]"
 end
 
-src << ")}\""
+src << "}}\""
 
 src2 = []
 src.chars do |c|
