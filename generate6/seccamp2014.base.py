@@ -4,4 +4,4 @@ __END__
 function encrypted(){/*
 <script src="seccamp2014.py"></script>
 {BASE64}
--!''';q="__END__=0;s=1//2or'''%s''';q=%c%s%c;print(q%%(s.replace('\\\\','\\\\\\\\'),34,q.replace('\\\\','\\\\\\\\'),34))#*/}";print(q%(s.replace('\\','\\\\'),34,q.replace('\\','\\\\'),34))#*/}
+-!''';q="__END__=0;s=1//2or'''%s''';q=%c%s%c;print(q%%(s.replace('\\\\','\\\\\\\\'),34,q.replace('\\\\','\\\\\\\\'),34,42))#%c/}";print(q%(s.replace('\\','\\\\'),34,q.replace('\\','\\\\'),34,42))#*/}
